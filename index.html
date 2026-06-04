@@ -1,0 +1,843 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Nurse Study｜自己肯定感が低く活動参加に自信が持てない患者の看護計画</title>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;600;700&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --ink: #1a1a2e;
+      --ink-light: #4a4a6a;
+      --muted: #8888aa;
+      --accent: #2d6a8a;
+      --accent-light: #4a9aba;
+      --accent-pale: #e8f4f8;
+      --green: #3d7a6a;
+      --green-pale: #e8f4f0;
+      --warm: #8a6a2d;
+      --warm-pale: #faf4e8;
+      --bg: #fafaf8;
+      --white: #ffffff;
+      --border: #e0e0ec;
+      --border-light: #eeeeF5;
+      --shadow-sm: 0 2px 8px rgba(26,26,46,0.06);
+      --shadow: 0 8px 32px rgba(26,26,46,0.10);
+      --radius: 12px;
+      --radius-sm: 8px;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: "Noto Sans JP", "Hiragino Kaku Gothic ProN", sans-serif;
+      background: var(--bg);
+      color: var(--ink);
+      line-height: 1.85;
+      letter-spacing: 0.025em;
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    /* ─── HEADER ─── */
+    .site-header {
+      position: sticky; top: 0; z-index: 100;
+      background: rgba(250,250,248,0.95);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .header-inner {
+      max-width: 1200px; margin: 0 auto;
+      padding: 0 28px; height: 64px;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+
+    .logo {
+      display: flex; align-items: center; gap: 10px;
+      font-family: "Noto Serif JP", serif;
+      font-size: 1.3rem; font-weight: 700;
+      color: var(--accent);
+      letter-spacing: 0.04em;
+    }
+
+    .logo-mark {
+      width: 32px; height: 32px; border-radius: 8px;
+      background: var(--accent);
+      color: white; display: grid; place-items: center;
+      font-size: 0.85rem; font-weight: 700;
+    }
+
+    .nav { display: flex; gap: 28px; }
+
+    .nav a {
+      font-size: 0.88rem; font-weight: 500;
+      color: var(--ink-light);
+      transition: color 0.2s;
+      padding-bottom: 2px;
+      border-bottom: 1px solid transparent;
+    }
+
+    .nav a:hover { color: var(--accent); border-bottom-color: var(--accent); }
+
+    .header-actions { display: flex; gap: 10px; align-items: center; }
+
+    .btn {
+      padding: 7px 18px; border-radius: var(--radius-sm);
+      font-size: 0.85rem; font-weight: 700;
+      transition: all 0.2s; cursor: pointer; border: none;
+    }
+
+    .btn-ghost {
+      background: transparent; color: var(--ink-light);
+      border: 1px solid var(--border);
+    }
+    .btn-ghost:hover { background: var(--border-light); color: var(--ink); }
+
+    .btn-primary {
+      background: var(--accent); color: white;
+    }
+    .btn-primary:hover { background: var(--accent-light); }
+
+    .hamburger {
+      display: none; width: 38px; height: 38px;
+      border: 1px solid var(--border); border-radius: var(--radius-sm);
+      background: white; cursor: pointer;
+    }
+    .hamburger span {
+      display: block; width: 18px; height: 1.5px;
+      background: var(--ink); margin: 4px auto;
+    }
+
+    /* ─── HERO ─── */
+    .hero {
+      border-bottom: 1px solid var(--border);
+      background: linear-gradient(160deg, #f0f7fa 0%, #fafaf8 60%);
+    }
+
+    .hero-inner {
+      max-width: 1200px; margin: 0 auto;
+      padding: 48px 28px 40px;
+    }
+
+    .breadcrumb {
+      font-size: 0.82rem; color: var(--muted);
+      margin-bottom: 22px; display: flex; gap: 6px; align-items: center;
+    }
+    .breadcrumb a { color: var(--accent); font-weight: 500; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .breadcrumb-sep { color: var(--border); }
+
+    .hero-label {
+      display: inline-flex; align-items: center; gap: 6px;
+      background: var(--accent-pale); color: var(--accent);
+      font-size: 0.8rem; font-weight: 700; padding: 4px 12px;
+      border-radius: 4px; margin-bottom: 16px;
+      border: 1px solid rgba(45,106,138,0.15);
+    }
+
+    .article-title {
+      font-family: "Noto Serif JP", serif;
+      font-size: clamp(1.6rem, 4vw, 2.4rem);
+      line-height: 1.4; color: var(--ink);
+      font-weight: 700; margin-bottom: 20px;
+      max-width: 820px;
+    }
+
+    .tags { display: flex; flex-wrap: wrap; gap: 7px; margin-bottom: 20px; }
+
+    .tag {
+      display: inline-block; padding: 4px 12px;
+      border-radius: 4px; background: white;
+      border: 1px solid var(--border);
+      color: var(--ink-light); font-size: 0.8rem; font-weight: 500;
+      transition: border-color 0.2s;
+    }
+    .tag:hover { border-color: var(--accent-light); color: var(--accent); }
+
+    .share { display: flex; flex-wrap: wrap; gap: 8px; }
+
+    .share-btn {
+      display: inline-flex; align-items: center; gap: 6px;
+      padding: 6px 14px; border-radius: var(--radius-sm);
+      background: white; border: 1px solid var(--border);
+      color: var(--ink-light); font-size: 0.82rem; font-weight: 500;
+      transition: all 0.2s;
+    }
+    .share-btn:hover { border-color: var(--accent); color: var(--accent); }
+
+    /* ─── LAYOUT ─── */
+    .layout {
+      max-width: 1200px; margin: 36px auto;
+      padding: 0 28px;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 290px;
+      gap: 32px; align-items: start;
+    }
+
+    /* ─── ARTICLE ─── */
+    .article {
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow-sm);
+      padding: clamp(28px, 4vw, 52px);
+    }
+
+    .article h2 {
+      font-family: "Noto Serif JP", serif;
+      font-size: 1.35rem; font-weight: 700;
+      color: var(--ink);
+      margin: 48px 0 16px;
+      padding-bottom: 10px;
+      border-bottom: 2px solid var(--border);
+      display: flex; align-items: center; gap: 10px;
+    }
+
+    .article h2::before {
+      content: "";
+      display: inline-block; width: 4px; height: 1.2em;
+      background: var(--accent); border-radius: 2px; flex-shrink: 0;
+    }
+
+    .article h3 {
+      font-size: 1.0rem; font-weight: 700;
+      color: var(--accent); margin: 24px 0 8px;
+    }
+
+    .article p { margin-bottom: 14px; font-size: 0.95rem; color: var(--ink-light); line-height: 1.9; }
+
+    .article ul, .article ol {
+      padding-left: 20px; margin-bottom: 16px;
+    }
+
+    .article li { font-size: 0.95rem; color: var(--ink-light); margin-bottom: 6px; }
+
+    /* ─── TOC ─── */
+    .toc {
+      background: var(--accent-pale);
+      border: 1px solid rgba(45,106,138,0.15);
+      border-radius: var(--radius); padding: 24px;
+      margin: 32px 0 40px;
+    }
+
+    .toc-title {
+      font-family: "Noto Serif JP", serif;
+      font-size: 0.95rem; font-weight: 700;
+      color: var(--accent); margin-bottom: 12px;
+      display: flex; align-items: center; gap: 8px;
+    }
+
+    .toc ol { padding-left: 18px; }
+    .toc li { margin-bottom: 5px; }
+    .toc a { font-size: 0.88rem; color: var(--accent); font-weight: 500; }
+    .toc a:hover { text-decoration: underline; }
+
+    /* ─── BOXES ─── */
+    .note-box, .case-box, .point-box, .caution-box {
+      border-radius: var(--radius); padding: 20px 22px; margin: 24px 0;
+    }
+
+    .note-box {
+      background: var(--accent-pale);
+      border-left: 3px solid var(--accent);
+    }
+
+    .case-box {
+      background: #f8f8fc;
+      border: 1px solid var(--border);
+    }
+
+    .point-box {
+      background: var(--warm-pale);
+      border-left: 3px solid var(--warm);
+    }
+
+    .caution-box {
+      background: #fff8f0;
+      border-left: 3px solid #c0602a;
+    }
+
+    .box-title {
+      font-size: 0.85rem; font-weight: 700;
+      color: var(--ink); margin-bottom: 10px;
+      display: flex; align-items: center; gap: 6px;
+    }
+
+    .note-box .box-title { color: var(--accent); }
+    .point-box .box-title { color: var(--warm); }
+    .caution-box .box-title { color: #c0602a; }
+
+    /* ─── PLAN GRID ─── */
+    .plan-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px; margin: 24px 0;
+    }
+
+    .plan-card {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 20px;
+    }
+
+    .plan-card h3 {
+      margin-top: 0; font-size: 0.88rem;
+      display: flex; align-items: center; gap: 8px;
+    }
+
+    .plan-card p { font-size: 0.88rem; margin-bottom: 0; }
+
+    .icon {
+      width: 28px; height: 28px; border-radius: 6px;
+      background: var(--accent-pale); display: grid;
+      place-items: center; font-size: 0.85rem; flex-shrink: 0;
+    }
+
+    /* ─── TABLE ─── */
+    .table-wrap {
+      overflow-x: auto; border-radius: var(--radius);
+      border: 1px solid var(--border); margin: 24px 0;
+    }
+
+    table { width: 100%; min-width: 680px; border-collapse: collapse; background: white; }
+
+    th, td {
+      padding: 14px 16px;
+      border-bottom: 1px solid var(--border-light);
+      text-align: left; vertical-align: top;
+      font-size: 0.9rem;
+    }
+
+    th {
+      background: #f4f6fb;
+      color: var(--ink); font-weight: 700;
+      white-space: nowrap; font-size: 0.85rem;
+    }
+
+    tr:last-child td { border-bottom: none; }
+    td:first-child { color: var(--accent); font-weight: 700; font-size: 0.82rem; white-space: nowrap; }
+
+    /* ─── RELATED ─── */
+    .related-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 14px; margin-top: 20px;
+    }
+
+    .related-card {
+      display: block; background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 18px;
+      transition: all 0.2s;
+    }
+
+    .related-card:hover {
+      border-color: var(--accent-light);
+      box-shadow: var(--shadow-sm);
+      transform: translateY(-2px);
+    }
+
+    .related-card-cat {
+      font-size: 0.75rem; color: var(--accent);
+      font-weight: 700; margin-bottom: 6px; display: block;
+    }
+
+    .related-card h3 {
+      font-size: 0.9rem; color: var(--ink); font-weight: 500;
+      margin: 0; line-height: 1.6;
+    }
+
+    /* ─── SIDEBAR ─── */
+    .sidebar { position: sticky; top: 80px; display: grid; gap: 16px; }
+
+    .side-card {
+      background: white; border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 20px;
+    }
+
+    .side-card-title {
+      font-size: 0.82rem; font-weight: 700;
+      color: var(--muted); letter-spacing: 0.08em;
+      text-transform: uppercase; margin-bottom: 14px;
+      padding-bottom: 10px; border-bottom: 1px solid var(--border-light);
+    }
+
+    .search-form { display: flex; gap: 8px; }
+
+    .search-form input {
+      flex: 1; border: 1px solid var(--border);
+      border-radius: var(--radius-sm); padding: 9px 12px;
+      font-size: 0.88rem; outline: none;
+      transition: border-color 0.2s;
+    }
+    .search-form input:focus { border-color: var(--accent); }
+
+    .search-form button {
+      border: none; background: var(--accent); color: white;
+      border-radius: var(--radius-sm); padding: 9px 14px;
+      cursor: pointer; font-size: 0.82rem; font-weight: 700;
+      transition: background 0.2s;
+    }
+    .search-form button:hover { background: var(--accent-light); }
+
+    .side-list { list-style: none; }
+
+    .side-list li {
+      padding: 10px 0;
+      border-bottom: 1px solid var(--border-light);
+    }
+    .side-list li:last-child { border-bottom: none; }
+
+    .side-list a {
+      font-size: 0.88rem; color: var(--ink-light);
+      font-weight: 500; transition: color 0.2s;
+      line-height: 1.5;
+    }
+    .side-list a:hover { color: var(--accent); }
+
+    .tag-cloud { display: flex; flex-wrap: wrap; gap: 7px; }
+
+    /* ─── FOOTER ─── */
+    .footer {
+      margin-top: 60px;
+      background: var(--ink); color: #c8c8dc;
+      border-top: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .footer-inner {
+      max-width: 1200px; margin: 0 auto;
+      padding: 40px 28px;
+      display: grid; grid-template-columns: 1.4fr 1fr;
+      gap: 24px;
+    }
+
+    .footer-logo {
+      font-family: "Noto Serif JP", serif;
+      font-size: 1.2rem; font-weight: 700;
+      color: white; margin-bottom: 10px;
+      display: flex; align-items: center; gap: 8px;
+    }
+
+    .footer-logo-mark {
+      width: 28px; height: 28px; border-radius: 6px;
+      background: var(--accent); display: grid;
+      place-items: center; font-size: 0.8rem; color: white; font-weight: 700;
+    }
+
+    .footer p { font-size: 0.88rem; line-height: 1.8; }
+
+    .footer-links {
+      display: flex; flex-wrap: wrap; gap: 14px;
+      justify-content: flex-end; align-items: flex-start;
+      padding-top: 4px;
+    }
+
+    .footer-links a {
+      color: #a8a8c4; font-size: 0.85rem; font-weight: 500;
+      transition: color 0.2s;
+    }
+    .footer-links a:hover { color: white; }
+
+    .footer-copy {
+      border-top: 1px solid rgba(255,255,255,0.08);
+      padding: 16px 28px; text-align: center;
+      font-size: 0.78rem; color: #666688;
+    }
+
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 960px) {
+      .hamburger { display: block; }
+      .nav, .header-actions { display: none; }
+
+      .layout { grid-template-columns: 1fr; }
+      .sidebar { position: static; }
+      .plan-grid, .related-grid { grid-template-columns: 1fr; }
+      .footer-inner { grid-template-columns: 1fr; }
+      .footer-links { justify-content: flex-start; }
+    }
+
+    @media (max-width: 540px) {
+      .header-inner, .hero-inner, .layout, .footer-inner, .footer-copy { padding-left: 16px; padding-right: 16px; }
+      .article { padding: 24px 18px; }
+      .article-title { font-size: 1.5rem; }
+    }
+  </style>
+</head>
+
+<body>
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="#" class="logo">
+        <span class="logo-mark">N</span>
+        Nurse Study
+      </a>
+
+      <button class="hamburger" id="hamburger" aria-label="メニューを開く">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="nav">
+        <a href="#">看護計画</a>
+        <a href="#">疾患別まとめ</a>
+        <a href="#">実習記録</a>
+        <a href="#">国試対策</a>
+      </nav>
+
+      <div class="header-actions">
+        <a href="#" class="btn btn-ghost">ログイン</a>
+        <a href="#" class="btn btn-primary">新規登録</a>
+      </div>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="hero-inner">
+      <div class="breadcrumb">
+        <a href="#">ホーム</a>
+        <span class="breadcrumb-sep">›</span>
+        <a href="#">看護計画</a>
+        <span class="breadcrumb-sep">›</span>
+        <span>自己肯定感が低く活動参加に自信が持てない患者の看護計画</span>
+      </div>
+
+      <div class="hero-label">精神看護学</div>
+
+      <h1 class="article-title">自己肯定感が低く、活動への参加に自信が持てない患者の看護計画</h1>
+
+      <div class="tags">
+        <a href="#" class="tag">#精神看護学</a>
+        <a href="#" class="tag">#自己肯定感</a>
+        <a href="#" class="tag">#活動参加</a>
+        <a href="#" class="tag">#看護計画</a>
+        <a href="#" class="tag">#実習記録</a>
+      </div>
+
+      <div class="share">
+        <a href="#" class="share-btn">X で共有</a>
+        <a href="#" class="share-btn">LINE で送る</a>
+        <a href="#" class="share-btn">Facebook</a>
+        <a href="#" class="share-btn">URL コピー</a>
+      </div>
+    </div>
+  </section>
+
+  <main class="layout">
+    <article class="article">
+      <div class="note-box">
+        <div class="box-title">はじめに</div>
+        <p style="margin-bottom:0;">
+          この記事は、看護学生が「自己肯定感が低く、活動への参加に自信が持てない患者さん」への看護計画を学ぶためのサンプル記事です。
+          実際の看護計画は、患者さんの状態、治療方針、施設の方針、教員・実習指導者の助言に合わせて調整してください。
+        </p>
+      </div>
+
+      <nav class="toc">
+        <div class="toc-title">目次</div>
+        <ol>
+          <li><a href="#intro">導入文</a></li>
+          <li><a href="#case">患者事例</a></li>
+          <li><a href="#diagnosis">看護診断</a></li>
+          <li><a href="#goal">患者目標</a></li>
+          <li><a href="#plan">具体的な看護計画</a></li>
+          <li><a href="#evaluation">看護の評価</a></li>
+          <li><a href="#point">看護計画を書くときのポイント</a></li>
+          <li><a href="#summary">まとめ</a></li>
+        </ol>
+      </nav>
+
+      <section id="intro">
+        <h2>導入文</h2>
+        <p>精神看護では、患者さんの症状だけでなく、自己肯定感、自信の低下、活動への意欲、他者との関わり方などを丁寧に観察することが大切です。活動に参加できない背景には、「失敗したらどうしよう」「自分にはできない」という不安や、疲労感、対人関係への緊張が関係していることがあります。</p>
+        <p>このページでは、自己肯定感が低く、活動への参加に自信が持てない患者さんを想定し、看護診断、患者目標、OP・TP・EP、評価までの流れを整理します。</p>
+      </section>
+
+      <section id="case">
+        <h2>患者事例</h2>
+        <div class="case-box">
+          <div class="box-title">事例紹介</div>
+          <p>Aさんは精神科病棟に入院中の患者さんである。病棟内で行われる作業療法やレクリエーションへの参加を勧められているが、「自分はうまくできないと思う」「周りに迷惑をかけるかもしれない」と話し、活動参加に消極的である。活動に参加しても途中で疲労を訴えたり、周囲の様子を気にして発言が少なくなったりすることがある。</p>
+          <p style="margin-bottom:0;">一方で、短時間であれば集中して取り組める場面もあり、活動後に「少しできたかもしれない」と話すことがある。看護師は、患者さんの不安や疲労に配慮しながら、活動参加を成功体験として振り返れるよう支援する必要がある。</p>
+        </div>
+      </section>
+
+      <section id="diagnosis">
+        <h2>看護診断</h2>
+        <p>この事例では、自己肯定感の低さや失敗への不安が、活動参加への自信のなさにつながっていると考えられます。そのため、活動への参加を強く促すだけでなく、患者さんのペースに合わせて安心して取り組めるように支援することが大切です。</p>
+
+        <div class="plan-grid">
+          <div class="plan-card">
+            <h3><span class="icon">🩺</span>看護診断</h3>
+            <p>自己肯定感の低下や失敗への不安により、活動への参加に自信が持てず、主体的な活動参加が難しい状態。</p>
+          </div>
+          <div class="plan-card">
+            <h3><span class="icon">🎯</span>患者目標</h3>
+            <p>無理のない範囲で活動に参加し、自分が取り組めたことやできたことを肯定的に振り返ることができる。</p>
+          </div>
+          <div class="plan-card">
+            <h3><span class="icon">📋</span>具体的な看護計画</h3>
+            <p>活動への参加状況、表情、疲労、発言、他者との関わりを観察し、患者さんのペースに合わせて活動参加を支援する。活動後は結果だけでなく、取り組みの過程を肯定的にフィードバックする。</p>
+          </div>
+          <div class="plan-card">
+            <h3><span class="icon">✅</span>評価</h3>
+            <p>活動参加への不安が軽減したか、参加時間や集中の程度に変化があったか、患者さんが自分の努力やできたことに目を向けられたかを確認する。</p>
+          </div>
+        </div>
+      </section>
+
+      <section id="goal">
+        <h2>患者目標</h2>
+        <h3>短期目標</h3>
+        <ul>
+          <li>活動に対する不安や疲労感を看護師に伝えることができる。</li>
+          <li>無理のない範囲で活動に参加することができる。</li>
+          <li>活動後に、自分が取り組めたことを1つ以上言葉にできる。</li>
+        </ul>
+        <h3>長期目標</h3>
+        <ul>
+          <li>活動参加を通して小さな成功体験を積み重ねることができる。</li>
+          <li>自分の頑張りやできたことに目を向け、自己肯定感を少しずつ高めることができる。</li>
+          <li>患者さん自身のペースで、日常生活や集団活動への参加を広げることができる。</li>
+        </ul>
+      </section>
+
+      <section id="plan">
+        <h2>具体的な看護計画</h2>
+
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>分類</th>
+                <th>看護計画</th>
+                <th>具体的な内容</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>OP<br>観察計画</td>
+                <td>活動への参加状況を観察する。</td>
+                <td>① 活動への参加状況を観察する。参加の有無、参加時間、集中の程度を確認する。</td>
+              </tr>
+              <tr>
+                <td>OP<br>観察計画</td>
+                <td>活動中の心身の反応を観察する。</td>
+                <td>② 活動中の表情や発言、疲労の有無を観察する。</td>
+              </tr>
+              <tr>
+                <td>OP<br>観察計画</td>
+                <td>活動に対する思いや達成感を確認する。</td>
+                <td>③ 活動に対する意欲や達成感に関する発言を確認する。</td>
+              </tr>
+              <tr>
+                <td>OP<br>観察計画</td>
+                <td>他者との関わりを観察する。</td>
+                <td>④ 他者との関わりの様子を観察する。</td>
+              </tr>
+              <tr>
+                <td>TP<br>援助計画</td>
+                <td>疲労時に安心して休息できるよう支援する。</td>
+                <td>① 活動中に疲労がみられた際は、「休んでも大丈夫ですよ」と声をかけ、安心して参加できるよう支援する。</td>
+              </tr>
+              <tr>
+                <td>TP<br>援助計画</td>
+                <td>活動後に肯定的なフィードバックを行う。</td>
+                <td>② 活動終了後は、結果だけでなく取り組みの過程について肯定的なフィードバックを行う。</td>
+              </tr>
+              <tr>
+                <td>TP<br>援助計画</td>
+                <td>努力や参加そのものを認める声かけを行う。</td>
+                <td>③ 「集中していましたね」など、活動への参加や努力を認める声かけを行う。</td>
+              </tr>
+              <tr>
+                <td>TP<br>援助計画</td>
+                <td>患者さんのペースに合わせて活動参加を促す。</td>
+                <td>④ 患者さんのペースに合わせて活動参加を促し、無理のない範囲で取り組めるよう支援する。</td>
+              </tr>
+              <tr>
+                <td>EP<br>教育計画</td>
+                <td>疲労時の休息について説明する。</td>
+                <td>① 疲労を感じた際は、無理をせず休息をとってよいことを説明する。</td>
+              </tr>
+              <tr>
+                <td>EP<br>教育計画</td>
+                <td>活動参加そのものの価値を伝える。</td>
+                <td>② 活動に参加できたこと自体に価値があることを伝え、成功体験として振り返る。</td>
+              </tr>
+              <tr>
+                <td>EP<br>教育計画</td>
+                <td>できたことに目を向けられるよう支援する。</td>
+                <td>③ 自分の頑張りやできたことに目を向けられるよう支援する。</td>
+              </tr>
+              <tr>
+                <td>EP<br>教育計画</td>
+                <td>達成感や楽しさを振り返り、自己肯定感の向上につなげる。</td>
+                <td>
+                  ④ 活動を通して得られた達成感や楽しさについて振り返り、自己肯定感の向上につなげられるよう支援する。
+                  <div class="point-box" style="margin:14px 0 0;">
+                    <div class="box-title">注意書き</div>
+                    <p style="margin-bottom:0;font-size:0.88rem;">
+                      目標と整合性の取れたOP・TPであるかを確認してください。本計画では、「無理のない範囲で活動に参加し、自分が取り組めたことやできたことを肯定的に振り返ることができる」という患者目標に対して、OPは参加状況、参加時間、集中の程度、表情、発言、疲労、達成感に関する発言、他者との関わりを観察しており、TPは休息の保障、肯定的なフィードバック、努力を認める声かけ、患者さんのペースに合わせた参加支援を含んでいるため、目標と整合性があります。
+                    </p>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="point-box">
+          <div class="box-title">ポイント</div>
+          <p style="margin-bottom:0;font-size:0.92rem;">
+            自己肯定感が低い患者さんへの看護では、「できた・できなかった」という結果だけでなく、「参加しようとした」「短時間でも集中できた」「疲労を伝えられた」「少し楽しかったと感じられた」など、過程や感情の変化を認める関わりが重要です。
+          </p>
+        </div>
+
+        <div class="caution-box">
+          <div class="box-title">注意点</div>
+          <p style="margin-bottom:0;font-size:0.92rem;">
+            活動参加を無理に促すと、患者さんの不安や失敗体験につながる可能性があります。患者さんの疲労や表情を観察し、休息を保障しながら、安心して取り組める範囲を一緒に考えることが大切です。
+          </p>
+        </div>
+      </section>
+
+      <section id="evaluation">
+        <h2>看護の評価</h2>
+        <p>評価では、患者さんが活動に参加できたかだけでなく、活動への不安、自信、疲労の訴え、活動後の発言に変化がみられたかを確認します。また、患者さんが自分の頑張りやできたこと、活動を通して得られた達成感や楽しさに目を向けられているかを評価します。</p>
+        <ul>
+          <li>活動への参加の有無、参加時間、集中の程度に変化があったか。</li>
+          <li>疲労を感じた際に、無理をせず休息を申し出ることができたか。</li>
+          <li>活動後に「できた」「少し頑張れた」「楽しかった」など肯定的な発言がみられたか。</li>
+          <li>看護師の声かけにより、安心して活動に取り組める場面が増えたか。</li>
+          <li>他者との関わりを避けすぎず、無理のない範囲で交流できたか。</li>
+          <li>活動を通して得られた達成感を振り返ることができたか。</li>
+          <li>目標とOP・TP・EPの内容がつながっているか。</li>
+        </ul>
+      </section>
+
+      <section id="point">
+        <h2>看護計画を書くときのポイント</h2>
+        <div class="note-box">
+          <div class="box-title">書き方のコツ</div>
+          <p style="margin-bottom:0;">
+            看護計画では、「活動に参加できない」とだけ書くのではなく、なぜ参加が難しいのか、参加したときにどのような反応があるのか、どのような支援があれば参加しやすいのかを整理します。
+          </p>
+        </div>
+        <h3>1. 目標は患者さんの状態に合わせる</h3>
+        <p>自信が低下している患者さんに対して、最初から長時間の参加や積極的な発言を目標にすると負担になることがあります。まずは「短時間参加できる」「疲れたら休める」「できたことを振り返れる」など、達成しやすい目標にします。</p>
+        <h3>2. OPは目標達成に必要な情報を観察する</h3>
+        <p>活動への参加状況、参加時間、集中の程度、表情、疲労、発言、達成感に関する発言、他者との関わりは、患者さんが無理なく活動に参加できているか、活動を肯定的に振り返れているかを判断するために必要な情報です。</p>
+        <h3>3. TPは安心感と成功体験につながる援助にする</h3>
+        <p>「休んでも大丈夫」と伝えることや、取り組みの過程を肯定することは、患者さんが安心して活動に参加し、小さな成功体験を積み重ねるための支援になります。</p>
+        <h3>4. EPは患者さんが自分で対処できる力につなげる</h3>
+        <p>疲労時に休息してよいこと、参加できたこと自体に価値があること、活動から得られた達成感や楽しさを振り返ることを伝えることで、患者さんが自分の状態や頑張りに気づき、自己肯定感の向上につなげやすくなります。</p>
+      </section>
+
+      <section id="summary">
+        <h2>まとめ</h2>
+        <p>自己肯定感が低く、活動への参加に自信が持てない患者さんへの看護では、活動参加を無理に促すのではなく、患者さんのペースを尊重しながら、安心して参加できる環境を整えることが大切です。</p>
+        <p>OPでは活動状況や疲労、発言、他者との関わりを観察し、TPでは休息の保障や肯定的なフィードバックを行い、EPでは疲労時の休息、成功体験の振り返り、活動を通して得られた達成感や楽しさへの気づきを支援します。これらは「無理のない範囲で活動に参加し、自分ができたことを肯定的に振り返る」という患者目標と整合しています。</p>
+        <div class="note-box">
+          <div class="box-title">注記</div>
+          <p style="margin-bottom:0;">本記事は学習用の例です。実際の看護計画は、患者さんの状態、疾患、治療方針、リスク、施設の方針、教員・実習指導者の助言に合わせて調整してください。医療情報として一律に断定するものではありません。</p>
+        </div>
+      </section>
+
+      <section>
+        <h2>関連記事</h2>
+        <div class="related-grid">
+          <a href="#" class="related-card">
+            <span class="related-card-cat">精神看護学</span>
+            <h3>自己肯定感が低い患者への関わり方</h3>
+          </a>
+          <a href="#" class="related-card">
+            <span class="related-card-cat">実習記録</span>
+            <h3>精神科実習で使える観察項目まとめ</h3>
+          </a>
+          <a href="#" class="related-card">
+            <span class="related-card-cat">看護過程</span>
+            <h3>OP・TP・EPのつなげ方と書き方</h3>
+          </a>
+        </div>
+      </section>
+    </article>
+
+    <aside class="sidebar">
+      <div class="side-card">
+        <div class="side-card-title">検索</div>
+        <form class="search-form">
+          <input type="search" placeholder="キーワードを入力" />
+          <button type="submit">検索</button>
+        </form>
+      </div>
+
+      <div class="side-card">
+        <div class="side-card-title">関連記事</div>
+        <ul class="side-list">
+          <li><a href="#">自己肯定感が低い患者への看護</a></li>
+          <li><a href="#">活動参加を促す声かけの例</a></li>
+          <li><a href="#">精神科実習の看護計画の書き方</a></li>
+        </ul>
+      </div>
+
+      <div class="side-card">
+        <div class="side-card-title">人気記事</div>
+        <ul class="side-list">
+          <li><a href="#">看護計画の基本テンプレート</a></li>
+          <li><a href="#">アセスメントの書き方</a></li>
+          <li><a href="#">患者目標の立て方</a></li>
+        </ul>
+      </div>
+
+      <div class="side-card">
+        <div class="side-card-title">タグ</div>
+        <div class="tag-cloud">
+          <a href="#" class="tag">精神看護</a>
+          <a href="#" class="tag">自己肯定感</a>
+          <a href="#" class="tag">活動参加</a>
+          <a href="#" class="tag">看護過程</a>
+          <a href="#" class="tag">国試</a>
+          <a href="#" class="tag">実習</a>
+        </div>
+      </div>
+    </aside>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      <div>
+        <div class="footer-logo">
+          <span class="footer-logo-mark">N</span>
+          Nurse Study
+        </div>
+        <p>看護学生が疾患別・症状別の看護計画を学ぶための学習メディアです。事例理解から看護診断、目標、計画、評価までをやさしく整理します。</p>
+      </div>
+      <div class="footer-links">
+        <a href="#">利用規約</a>
+        <a href="#">プライバシーポリシー</a>
+        <a href="#">お問い合わせ</a>
+      </div>
+    </div>
+    <div class="footer-copy">© 2026 Nurse Study. All rights reserved.</div>
+  </footer>
+
+  <script>
+    const hamburger = document.getElementById("hamburger");
+    hamburger.addEventListener("click", () => {
+      const nav = document.querySelector(".nav");
+      const actions = document.querySelector(".header-actions");
+      nav.style.display = nav.style.display === "flex" ? "none" : "flex";
+      if (actions) actions.style.display = actions.style.display === "flex" ? "none" : "flex";
+    });
+
+    document.querySelector(".search-form").addEventListener("submit", e => {
+      e.preventDefault();
+      const kw = e.target.querySelector("input").value.trim();
+      if (!kw) { alert("検索キーワードを入力してください。"); return; }
+      alert("サンプルサイトのため、検索機能はデザインのみです。\nキーワード：" + kw);
+    });
+  </script>
+</body>
+</html>
